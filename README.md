@@ -10,7 +10,7 @@ The code is a rough fork of [backlogger](https://github.com/openSUSE/backlogger)
 
 Invoke the script like that:
 ``` 
-$ REDMINE_API_KEY=<your_api_key> ./collector --start=<YYYY-MM-DD> --end=>YYYY-MMM-DD>
+$ REDMINE_API_KEY=<your_api_key> ./collector --start=<YYYY-MM-DD> --end=<YYYY-MMM-DD>
 ```
 
 ### Parameters
