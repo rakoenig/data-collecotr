@@ -60,18 +60,23 @@ if __name__ == "__main__":
     filter_mid="&v[closed_on][]="
     filter_end="&f[]=&c[]=subject&c[]=project&c[]=status&c[]=assigned_to&c[]=fixed_version&c[]=is_private&c[]=due_date&c[]=relations&group_by=&t[]="
     parser = argparse.ArgumentParser()
-    parser.add_argument("--start", default="2024-01-01")
+    parser.add_argument("--start", default="2023-12-01")
     parser.add_argument("--end", default=datetime.today().strftime('%Y-%m-%d'))
+    parser.add_argument("--dump", default="false")
     switches = parser.parse_args()
     startdate=datetime.strptime(switches.start, '%Y-%m-%d')
     enddate=datetime.strptime(switches.end, '%Y-%m-%d')
-    currentdate=startdate
+    if (switches.dump == 'true'):
+       print("Date,Resolved")
+       currentdate=startdate
+    else:
+        currentdate = enddate 
     while currentdate <= enddate:
         num=check_backlog(filter_start + switches.start + filter_mid + currentdate.strftime('%Y-%m-%d') + filter_end)
         numstr=str(num)
         print(currentdate.strftime('%Y-%m-%d') + ", " + numstr)
-        
         currentdate=currentdate + timedelta(days=1)
-    
+
+
 
     
